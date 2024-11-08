@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:your_app_name/constant.dart';
 
 class Homescreen extends StatefulWidget {
-  Homescreen({super.key});
+  const Homescreen({super.key});
 
   @override
   State<Homescreen> createState() => _HomescreenState();
@@ -40,13 +40,13 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Flutter API')),
+        title: const Center(child: Text('Flutter API')),
       ),
       body: FutureBuilder<List<dynamic>>(
         future: _productFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -54,7 +54,7 @@ class _HomescreenState extends State<Homescreen> {
           }
 
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No products available'));
+            return const Center(child: Text('No products available'));
           }
 
           return GridView.builder(
@@ -78,21 +78,21 @@ class _HomescreenState extends State<Homescreen> {
                           height: 100,
                           fit: BoxFit.cover,
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           product['title'] ?? 'No Title', 
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("\$${product['price']}"),
                             IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.favorite_border),
+                              icon: const Icon(Icons.favorite_border),
                             ),
                           ],
                         ),
@@ -102,7 +102,7 @@ class _HomescreenState extends State<Homescreen> {
                 ),
               );
             },
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 0.75, 
               crossAxisSpacing: 10,
@@ -117,7 +117,7 @@ class _HomescreenState extends State<Homescreen> {
             _productFuture = _getProduct(); 
           });
         },
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
     );
   }
