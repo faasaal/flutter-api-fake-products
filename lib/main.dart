@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:your_app_name/homescreen.dart'; // Replace with the correct import path
-import 'package:your_app_name/splash.dart'; // Replace with the correct import path if needed
+import 'package:your_app_name/homescreen.dart';
+import 'package:your_app_name/splash.dart'; 
 
 void main() {
   runApp(const MyApp());
