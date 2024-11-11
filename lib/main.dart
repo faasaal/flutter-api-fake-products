@@ -5,7 +5,6 @@ import 'package:your_app_name/splash.dart';
 
 void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
