@@ -17,7 +17,7 @@ class _HomescreenState extends State<Homescreen> {
   Future<List<dynamic>> _getProduct() async {
     try {
       var url = Uri.parse(kProductUrl);
-      final response = await http.get(url); 
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         return List<dynamic>.from(data);
@@ -33,7 +33,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   void initState() {
     super.initState();
-    _productFuture = _getProduct(); 
+    _productFuture = _getProduct();
   }
 
   @override
@@ -73,14 +73,14 @@ class _HomescreenState extends State<Homescreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.network(
-                          product['image'] ?? '', 
+                          product['image'] ?? '',
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          product['title'] ?? 'No Title', 
+                          product['title'] ?? 'No Title',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
@@ -104,7 +104,7 @@ class _HomescreenState extends State<Homescreen> {
             },
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 0.75, 
+              childAspectRatio: 0.75,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
@@ -114,7 +114,7 @@ class _HomescreenState extends State<Homescreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            _productFuture = _getProduct(); 
+            _productFuture = _getProduct();
           });
         },
         child: const Icon(Icons.refresh),

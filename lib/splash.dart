@@ -16,8 +16,9 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(const Duration(milliseconds: 1500), (){});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Homescreen()));
+    await Future.delayed(const Duration(milliseconds: 1500), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Homescreen()));
   }
 
   @override
@@ -27,7 +28,7 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(height:100,width: 100,color: Colors.blue),
+            Container(height: 100, width: 100, color: Colors.blue),
             Container(
               child: const Text(
                 "splash screen",
