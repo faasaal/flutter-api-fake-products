@@ -28,7 +28,7 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(height: 100, width: 100, color: Colors.blue),
+            Container(height: 100, width: 100, color: const Color.fromARGB(255, 33, 243, 117)),
             Container(
               child: const Text(
                 "splash screen",
