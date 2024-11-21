@@ -1,38 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:your_app_name/homescreen.dart';
+import 'package:your_app_name/homescreen.dart'; 
 
-class Splash extends StatefulWidget {
-  const Splash({super.key});
-
+class SplashScreen extends StatefulWidget {
   @override
-  State<Splash> createState() => _SplashState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigatetohome();
-  }
-
-  _navigatetohome() async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const Homescreen()));
+    
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black, 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(height: 100, width: 100, color: const Color.fromARGB(255, 33, 243, 117)),
-            Container(
-              child: const Text(
-                "splash screen",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            FlutterLogo(size: 100), 
+            SizedBox(height: 20),
+            Text(
+              'Welcome to Homescreen ',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ],
