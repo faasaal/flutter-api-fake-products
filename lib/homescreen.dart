@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:your_app_name/constant.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final data = jsonDecode(response.body);
       setState(() {
         _allProducts = data;
-        _filteredProducts = data; 
+        _filteredProducts = data;
       });
       return data;
     } else {
@@ -33,8 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _filterProducts(String query) {
     List filtered = _allProducts.where((product) {
-      return (product['title'] ?? '').toLowerCase().contains(query.toLowerCase()) ||
-          (product['category'] ?? '').toLowerCase().contains(query.toLowerCase());
+      return (product['title'] ?? '')
+              .toLowerCase()
+              .contains(query.toLowerCase()) ||
+          (product['category'] ?? '')
+              .toLowerCase()
+              .contains(query.toLowerCase());
     }).toList();
 
     setState(() {
@@ -47,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _productFuture = _getProduct();
     _searchController.addListener(() {
-      _filterProducts(_searchController.text); 
+      _filterProducts(_searchController.text);
     });
   }
 
@@ -72,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 35,
-              fontStyle: FontStyle.italic, 
+              fontStyle: FontStyle.italic,
               color: Colors.white,
             ),
           ),
@@ -122,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[300], 
+                          color: Colors.grey[300],
                         ),
                         child: const Icon(Icons.search),
                       ),
@@ -154,14 +158,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(height: 9.0),
                           Flexible(
                             child: Text(
-                              _filteredProducts[index]['description'] ?? 'No description',
+                              _filteredProducts[index]['description'] ??
+                                  'No description',
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
                           ),
                           SizedBox(height: 9.0),
-                          Text(_filteredProducts[index]['category'] ?? 'No category'),
+                          Text(_filteredProducts[index]['category'] ??
+                              'No category'),
                           SizedBox(height: 9.0),
                           Text(
                             "\$${_filteredProducts[index]['price'] ?? '0.00'}",
