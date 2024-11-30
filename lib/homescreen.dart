@@ -87,12 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: CircularProgressIndicator(),
             );
           }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (_filteredProducts.isEmpty) {
-            return Center(child: Text('No Data Available'));
-          }
 
           return Column(
             children: [
