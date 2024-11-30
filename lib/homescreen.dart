@@ -35,9 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
     List filtered = _allProducts.where((product) {
       return (product['title'] ?? '')
               .toLowerCase()
-              .contains(query.toLowerCase()) ||
-          (product['category'] ?? '')
-              .toLowerCase()
               .contains(query.toLowerCase());
     }).toList();
 
